@@ -1,0 +1,55 @@
+diff -urN -x CYGWIN-PATCHES -x 'aclocal.m4*' -x autom4te.cache -x config.cache -x config.log -x config.status -x config.h -x config.h.in -x ABOUT-NLS -x Makefile.in.in -x Makevars.template -x '*SlackBuild*' -x '*.egg-info' -x '*.class' -x '*.pyc' -x '*.mo' -x '*.gmo' -x '*.orig' -x '*.rej' -x '*.spec' -x '*.temp' -x '*~' -x '*.stackdump' -x COPYING -x INSTALL -x compile -x config-ml.in -x config.guess -x config.sub -x depcomp -x elisp-comp -x install-sh -x ltmain.sh -x mdate-sh -x missing -x mkinstalldirs -x py-compile -x symlink-tree -x texinfo.tex -x ylwrap -x config.rpath -x Makefile.in -x makefile.in -x configure -x omf.make -x xmldocs.make -x gnome-doc-utils.make -x gnome-doc-utils.m4 -x intltool.m4 -x intltool-extract -x intltool-extract.in -x intltool-merge -x intltool-merge.in -x intltool-update -x intltool-update.in -x gdome-config.1 origsrc/gdome2-0.8.1/configure.in src/gdome2-0.8.1/configure.in
+--- origsrc/gdome2-0.8.1/configure.in	2003-10-05 09:39:27.000000000 -0500
++++ src/gdome2-0.8.1/configure.in	2007-09-04 23:22:50.875000000 -0500
+@@ -53,6 +53,8 @@
+ AC_SUBST(CPPFLAGS)
+ AC_SUBST(LDFLAGS)
+ 
++PKG_PROG_PKG_CONFIG
++
+ dnl
+ dnl find glib
+ dnl
+diff -urN -x CYGWIN-PATCHES -x 'aclocal.m4*' -x autom4te.cache -x config.cache -x config.log -x config.status -x config.h -x config.h.in -x ABOUT-NLS -x Makefile.in.in -x Makevars.template -x '*SlackBuild*' -x '*.egg-info' -x '*.class' -x '*.pyc' -x '*.mo' -x '*.gmo' -x '*.orig' -x '*.rej' -x '*.spec' -x '*.temp' -x '*~' -x '*.stackdump' -x COPYING -x INSTALL -x compile -x config-ml.in -x config.guess -x config.sub -x depcomp -x elisp-comp -x install-sh -x ltmain.sh -x mdate-sh -x missing -x mkinstalldirs -x py-compile -x symlink-tree -x texinfo.tex -x ylwrap -x config.rpath -x Makefile.in -x makefile.in -x configure -x omf.make -x xmldocs.make -x gnome-doc-utils.make -x gnome-doc-utils.m4 -x intltool.m4 -x intltool-extract -x intltool-extract.in -x intltool-merge -x intltool-merge.in -x intltool-update -x intltool-update.in -x gdome-config.1 origsrc/gdome2-0.8.1/gdome-config.in src/gdome2-0.8.1/gdome-config.in
+--- origsrc/gdome2-0.8.1/gdome-config.in	2001-12-06 03:27:26.000000000 -0600
++++ src/gdome2-0.8.1/gdome-config.in	2007-09-05 19:42:46.453125000 -0500
+@@ -83,8 +83,8 @@
+     shift
+ done
+ 
+-the_libs="$the_libs -L${exec_prefix}/lib -lgdome `@GLIB_CONFIG@ --libs` `@XML_CONFIG@ --libs`"
+-the_flags="$the_flags -I${prefix}/include -I${prefix}/include/libgdome `@GLIB_CONFIG@ --cflags` `@XML_CONFIG@ --cflags`"
++the_libs="$the_libs -L${exec_prefix}/lib -lgdome `pkg-config @GLIB_REQUIRED@ --libs` `@XML_CONFIG@ --libs`"
++the_flags="$the_flags -I${prefix}/include -I${prefix}/include/libgdome `pkg-config @GLIB_REQUIRED@ --cflags` `@XML_CONFIG@ --cflags`"
+ 
+ if $cflags; then
+     all_flags="$the_flags"
+diff -urN -x CYGWIN-PATCHES -x 'aclocal.m4*' -x autom4te.cache -x config.cache -x config.log -x config.status -x config.h -x config.h.in -x ABOUT-NLS -x Makefile.in.in -x Makevars.template -x '*SlackBuild*' -x '*.egg-info' -x '*.class' -x '*.pyc' -x '*.mo' -x '*.gmo' -x '*.orig' -x '*.rej' -x '*.spec' -x '*.temp' -x '*~' -x '*.stackdump' -x COPYING -x INSTALL -x compile -x config-ml.in -x config.guess -x config.sub -x depcomp -x elisp-comp -x install-sh -x ltmain.sh -x mdate-sh -x missing -x mkinstalldirs -x py-compile -x symlink-tree -x texinfo.tex -x ylwrap -x config.rpath -x Makefile.in -x makefile.in -x configure -x omf.make -x xmldocs.make -x gnome-doc-utils.make -x gnome-doc-utils.m4 -x intltool.m4 -x intltool-extract -x intltool-extract.in -x intltool-merge -x intltool-merge.in -x intltool-update -x intltool-update.in -x gdome-config.1 origsrc/gdome2-0.8.1/gtk-doc/Makefile.am src/gdome2-0.8.1/gtk-doc/Makefile.am
+--- origsrc/gdome2-0.8.1/gtk-doc/Makefile.am	2002-04-04 00:58:04.000000000 -0600
++++ src/gdome2-0.8.1/gtk-doc/Makefile.am	2007-09-04 22:57:20.078125000 -0500
+@@ -7,11 +7,11 @@
+ DOC_MAIN_SGML_FILE=gdome2-docs.sgml
+ 
+ # The directory containing the source code (if it contains documentation).
+-DOC_SOURCE_DIR=../libgdome
++DOC_SOURCE_DIR=$(srcdir)/../libgdome
+ 
+ HTML_DIR=@HTML_DIR@
+ 
+-TARGET_DIR=$(HTML_DIR)/$(DOC_MODULE)
++TARGET_DIR=$(DESTDIR)$(HTML_DIR)/$(DOC_MODULE)
+ 
+ scan:
+ 	gtkdoc-scan --module=gdome2 $(DOC_SOURCE_DIR)/gdome.h $(DOC_SOURCE_DIR)/gdome-private-list.h $(DOC_SOURCE_DIR)/gdome-events.h $(DOC_SOURCE_DIR)/gdome-xpath.h $(DOC_SOURCE_DIR)/gdome-treegc.h
+diff -urN -x CYGWIN-PATCHES -x 'aclocal.m4*' -x autom4te.cache -x config.cache -x config.log -x config.status -x config.h -x config.h.in -x ABOUT-NLS -x Makefile.in.in -x Makevars.template -x '*SlackBuild*' -x '*.egg-info' -x '*.class' -x '*.pyc' -x '*.mo' -x '*.gmo' -x '*.orig' -x '*.rej' -x '*.spec' -x '*.temp' -x '*~' -x '*.stackdump' -x COPYING -x INSTALL -x compile -x config-ml.in -x config.guess -x config.sub -x depcomp -x elisp-comp -x install-sh -x ltmain.sh -x mdate-sh -x missing -x mkinstalldirs -x py-compile -x symlink-tree -x texinfo.tex -x ylwrap -x config.rpath -x Makefile.in -x makefile.in -x configure -x omf.make -x xmldocs.make -x gnome-doc-utils.make -x gnome-doc-utils.m4 -x intltool.m4 -x intltool-extract -x intltool-extract.in -x intltool-merge -x intltool-merge.in -x intltool-update -x intltool-update.in -x gdome-config.1 origsrc/gdome2-0.8.1/libgdome/Makefile.am src/gdome2-0.8.1/libgdome/Makefile.am
+--- origsrc/gdome2-0.8.1/libgdome/Makefile.am	2002-07-16 09:15:56.000000000 -0500
++++ src/gdome2-0.8.1/libgdome/Makefile.am	2007-09-04 22:57:34.359375000 -0500
+@@ -36,7 +36,7 @@
+         $(GLIB_LIBS)                                            \
+ 	$(NULL)
+         
+-libgdome_la_LDFLAGS = -version-info @GDOME_VERSION_INFO@
++libgdome_la_LDFLAGS = -version-info @GDOME_VERSION_INFO@ -no-undefined
+ 
+ # what is this include dir ?
+ libgdomeincdir = $(includedir)/libgdome

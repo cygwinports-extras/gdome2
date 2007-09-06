@@ -1,0 +1,6 @@
+category: Gnome Libs
+requires: cygwin glib2 libxml2
+sdesc: "GNOME DOM library (runtime)"
+ldesc: "DOM level2 library for accessing XML files based on libxml2.
+With gdome2 programmers can work with XML documents with an interface
+that is easy to use and compliant to W3C standards."
