@@ -126,4 +126,4 @@ gdome-config was replaced with a wrapper to pkg-config.
 
 
 Cygwin port maintained by:
-http://cygwinports.dotsrc.org/
+http://sourceware.org/cygwinports/
