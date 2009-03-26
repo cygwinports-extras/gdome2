@@ -1,0 +1,11 @@
+--- origsrc/gdome2-0.8.1/configure.in	2003-10-05 09:39:27.000000000 -0500
++++ src/gdome2-0.8.1/configure.in	2007-09-04 23:22:50.875000000 -0500
+@@ -53,6 +53,8 @@
+ AC_SUBST(CPPFLAGS)
+ AC_SUBST(LDFLAGS)
+ 
++PKG_PROG_PKG_CONFIG
++
+ dnl
+ dnl find glib
+ dnl

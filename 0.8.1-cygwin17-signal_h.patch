@@ -1,0 +1,59 @@
+1.7.0-44 <signal.h> does not compile with -ansi:
+
+http://cygwin.com/ml/cygwin/2009-03/msg00905.html
+
+--- origsrc/gdome2-0.8.1/libgdome/Makefile.am	2002-07-16 09:15:56.000000000 -0500
++++ src/gdome2-0.8.1/libgdome/Makefile.am	2009-03-25 21:38:40.348375000 -0500
+@@ -12,7 +12,7 @@ INCLUDES = 					\
+ 	-I$(top_srcdir)/libgdome/events 	\
+ 	-I$(top_srcdir)/libgdome/xpath	 	\
+ 	 $(LIBXML_CFLAGS) $(GLIB_CFLAGS) 	\
+-	-Wall -ansi				\
++	-Wall 				\
+ 	$(NULL)
+ 
+ lib_LTLIBRARIES = libgdome.la
+--- origsrc/gdome2-0.8.1/libgdome/events/Makefile.am	2001-05-19 09:18:35.000000000 -0500
++++ src/gdome2-0.8.1/libgdome/events/Makefile.am	2009-03-25 21:39:05.457750000 -0500
+@@ -4,7 +4,7 @@ INCLUDES = \
+ 	-I$(top_srcdir)/libgdome/gdomecore 	\
+ 	 $(LIBXML_CFLAGS) 			\
+ 	$(GLIB_CFLAGS) 				\
+-	-Wall -ansi				\
++	-Wall				\
+ 	$(NULL)
+ 
+ noinst_LTLIBRARIES = libgdomeevents.la
+--- origsrc/gdome2-0.8.1/libgdome/gdomecore/Makefile.am	2002-04-03 01:05:00.000000000 -0600
++++ src/gdome2-0.8.1/libgdome/gdomecore/Makefile.am	2009-03-25 21:39:09.176500000 -0500
+@@ -6,7 +6,7 @@ INCLUDES = \
+ 	-I$(top_srcdir)/libgdome/xpath 		\
+ 	$(LIBXML_CFLAGS) 			\
+ 	$(GLIB_CFLAGS) 				\
+-	-Wall -ansi				\
++	-Wall				\
+ 	$(NULL)
+ 
+ noinst_LTLIBRARIES = libgdomecore.la
+--- origsrc/gdome2-0.8.1/libgdome/xpath/Makefile.am	2002-02-28 22:00:25.000000000 -0600
++++ src/gdome2-0.8.1/libgdome/xpath/Makefile.am	2009-03-25 21:39:11.801500000 -0500
+@@ -4,7 +4,7 @@ INCLUDES = \
+ 	-I$(top_srcdir)/libgdome/gdomecore 	\
+ 	 $(LIBXML_CFLAGS) 			\
+ 	$(GLIB_CFLAGS) 				\
+-	-Wall -ansi				\
++	-Wall				\
+ 	$(NULL)
+ 
+ noinst_LTLIBRARIES = libgdomexpath.la
+--- origsrc/gdome2-0.8.1/test/Makefile.am	2002-05-28 19:24:49.000000000 -0500
++++ src/gdome2-0.8.1/test/Makefile.am	2009-03-25 21:45:33.676500000 -0500
+@@ -10,7 +10,7 @@ INCLUDES =					\
+ 	-I$(top_srcdir)/libgdome 		\
+ 	-I$(top_srcdir)/libgdome/gdomecore 	\
+ 	$(LIBXML_CFLAGS) $(GLIB_CFLAGS)        	\
+-	-Wall -ansi				\
++	-Wall				\
+ 	$(NULL)
+ 
+ noinst_PROGRAMS =		\

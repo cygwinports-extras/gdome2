@@ -1,0 +1,5 @@
+category: Gnome
+sdesc: "GNOME DOM library (sources)"
+ldesc: "DOM level2 library for accessing XML files based on libxml2.
+With gdome2 programmers can work with XML documents with an interface
+that is easy to use and compliant to W3C standards."

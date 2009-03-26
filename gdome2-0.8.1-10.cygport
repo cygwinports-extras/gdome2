@@ -1,0 +1,16 @@
+inherit gnome2
+
+DESCRIPTION="GNOME DOM C library"
+HOMEPAGE="http://gdome2.cs.unibo.it/"
+SRC_URI="http://gdome2.cs.unibo.it/tarball/${P}.tar.gz"
+PATCH_URI="mirror://portage/dev-libs/${PN}/files/${P}-gdome2-config.patch
+           0.8.1-cygwin17-signal_h.patch
+           0.8.1-docs-destdir.patch
+           0.8.1-no-undefined.patch
+           0.8.1-pkg-config.patch"
+
+PKG_NAMES="${PN} libgdome0 libgdome-devel"
+libgdome0_CONTENTS='usr/bin/cyggdome-0.dll usr/share/doc/'
+libgdome_devel_CONTENTS='--exclude=doc usr/bin/*-config usr/include/ usr/lib/ usr/share/'
+
+DIFF_EXCLUDES='gdome-config.1 *.xml'

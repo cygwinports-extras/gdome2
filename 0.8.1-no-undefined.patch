@@ -1,0 +1,11 @@
+--- origsrc/gdome2-0.8.1/libgdome/Makefile.am	2002-07-16 09:15:56.000000000 -0500
++++ src/gdome2-0.8.1/libgdome/Makefile.am	2007-09-04 22:57:34.359375000 -0500
+@@ -36,7 +36,7 @@
+         $(GLIB_LIBS)                                            \
+ 	$(NULL)
+         
+-libgdome_la_LDFLAGS = -version-info @GDOME_VERSION_INFO@
++libgdome_la_LDFLAGS = -version-info @GDOME_VERSION_INFO@ -no-undefined
+ 
+ # what is this include dir ?
+ libgdomeincdir = $(includedir)/libgdome
