@@ -1,5 +1,5 @@
 category: Gnome
-requires: cygwin libgdome0 libglib2.0-devel libxml2-devel
+requires: libgdome0 libglib2.0-devel libxml2-devel
 external-source: gdome2
 sdesc: "GNOME DOM library (development)"
 ldesc: "DOM level2 library for accessing XML files based on libxml2.
