@@ -1,0 +1,28 @@
+inherit gnome2
+
+NAME="gdome2"
+VERSION=0.8.1
+RELEASE=10
+CATEGORY="Libs"
+SUMMARY="GNOME DOM library"
+DESCRIPTION="DOM level2 library for accessing XML files based on libxml2.
+With gdome2 programmers can work with XML documents with an interface
+that is easy to use and compliant to W3C standards."
+HOMEPAGE="http://gdome2.cs.unibo.it/"
+SRC_URI="http://gdome2.cs.unibo.it/tarball/${NAME}-${VERSION}.tar.gz"
+PATCH_URI="
+	mirror://portage/dev-libs/gdome2/files/gdome2-0.8.1-gdome2-config.patch
+	mirror://portage/dev-libs/gdome2/files/gdome2-0.8.1-libxml2.patch
+	0.8.1-cygwin17-signal_h.patch
+	0.8.1-docs-destdir.patch
+	0.8.1-no-undefined.patch
+	0.8.1-pkg-config.patch
+"
+
+PKG_NAMES="libgdome0 libgdome-devel libgdome-doc"
+libgdome0_CONTENTS='usr/bin/cyggdome-0.dll usr/share/doc/'
+libgdome_devel_CONTENTS="usr/bin/*-config usr/include/ usr/lib/ usr/share/aclocal/ usr/share/man/"
+libgdome_doc_CATEGORY="Doc"
+libgdome_doc_CONTENTS="usr/share/gtk-doc/"
+
+DIFF_EXCLUDES='gdome-config.1 *.xml'
